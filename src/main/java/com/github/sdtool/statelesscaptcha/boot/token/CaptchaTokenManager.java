@@ -39,22 +39,49 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CaptchaTokenManager {
 
+    /**
+     * The captcha creator
+     */
     private Creator creator;
 
+    /**
+     * The captcha verifier
+     */
     private Verifier verifier;
 
+    /**
+     * The captcha builder
+     */
     private Captcha.Builder captchaBuilder;
 
+    /**
+     * The audio captcha builder
+     */
     private AudioCaptcha.Builder audioCaptchaBuilder;
 
+    /**
+     * Creates textual captcha
+     *
+     * @return the CaptchaToken
+     */
     public CaptchaToken createText() {
         return creator.create(captchaBuilder.addText().build());
     }
 
+    /**
+     * Creates audio captcha
+     *
+     * @return the CaptchaToken
+     */
     public CaptchaToken createAudio() {
         return creator.create(audioCaptchaBuilder.addAnswer().build());
     }
 
+    /**
+     * Verifies the captcha
+     *
+     * @return if the captcha is correct
+     */
     public boolean verify(CaptchaVerificationToken verificationToken) {
         try {
             verifier.verify(verificationToken);

@@ -37,21 +37,39 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(CaptchaProperties.class)
 public class StatelessCaptchaAutoConfiguration {
 
+    /**
+     * The captcha properties
+     */
     @Autowired
     private CaptchaProperties props;
 
+    /**
+     * The captcha creator
+     *
+     * @return the captcha creator
+     */
     @ConditionalOnMissingBean
     @Bean
     public Creator creator() {
         return new Creator(props.getToken());
     }
 
+    /**
+     * The captcha verifier
+     *
+     * @return the captcha verifier
+     */
     @ConditionalOnMissingBean
     @Bean
     public Verifier verifier() {
         return new Verifier(props.getToken());
     }
 
+    /**
+     * The textual Captcha.Builder
+     *
+     * @return the captcha builder
+     */
     @ConditionalOnMissingBean
     @Bean
     public Captcha.Builder captchaBuilder() {
@@ -61,6 +79,11 @@ public class StatelessCaptchaAutoConfiguration {
                 .addBorder();
     }
 
+    /**
+     * The audio AudioCaptcha.Builder
+     *
+     * @return the audio captcha builder
+     */
     @ConditionalOnMissingBean
     @Bean
     public AudioCaptcha.Builder audioCaptchaBuilder() {
@@ -69,10 +92,19 @@ public class StatelessCaptchaAutoConfiguration {
                 .addNoise();
     }
 
+    /**
+     * The captcha token manager
+     *
+     * @param creator the captcha creator
+     * @param verifier the captcha verifier
+     * @param captchaBuilder the captcha builder
+     * @param audioCaptchaBuilder the audio captcha builder
+     * @return the captchaTokenManager
+     */
     @ConditionalOnMissingBean
     @Bean
     @Autowired
-    public CaptchaTokenManager captchaCreatorVerifier(
+    public CaptchaTokenManager captchaTokenManager(
             Creator creator,
             Verifier verifier,
             Captcha.Builder captchaBuilder,
