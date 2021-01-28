@@ -80,6 +80,7 @@ public class CaptchaTokenManager {
     /**
      * Verifies the captcha
      *
+     * @param verificationToken the verification token
      * @return if the captcha is correct
      */
     public boolean verify(CaptchaVerificationToken verificationToken) {
