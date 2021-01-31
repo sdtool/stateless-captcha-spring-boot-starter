@@ -95,9 +95,9 @@ public class StatelessCaptchaAutoConfiguration {
     /**
      * The captcha token manager
      *
-     * @param creator the captcha creator
-     * @param verifier the captcha verifier
-     * @param captchaBuilder the captcha builder
+     * @param creator             the captcha creator
+     * @param verifier            the captcha verifier
+     * @param captchaBuilder      the captcha builder
      * @param audioCaptchaBuilder the audio captcha builder
      * @return the captchaTokenManager
      */

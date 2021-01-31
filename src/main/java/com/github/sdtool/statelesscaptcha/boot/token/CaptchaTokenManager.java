@@ -24,17 +24,15 @@ import com.github.sdtool.statelesscaptcha.token.CaptchaVerificationToken;
 import com.github.sdtool.statelesscaptcha.token.Creator;
 import com.github.sdtool.statelesscaptcha.token.Verifier;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * Captcha creator and verifier abstraction
  *
  * @author <a href="mailto:subhajitdas298@gmail.com">Subhajit Das</a>
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CaptchaTokenManager {
